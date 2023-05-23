@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CreatingAForm: View {
     var body: some View {
+        //MARK: Form and Gropu are limited to 10 rows
         Form {
             Section {
                 Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -41,7 +42,6 @@ struct CreatingAForm: View {
                 Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                 Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             }
-//MARK: Form and Gropu are limited to 10 rows
         }
     }
 }
