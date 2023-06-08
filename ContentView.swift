@@ -23,10 +23,21 @@ struct ContentView: View {
                         .keyboardType(.decimalPad)
                     Picker("Number of people", selection: $numbreOfPeople) {
                         ForEach(2..<100) {
-                            Text("\($o) people")
+                            Text("\($0) people")
                         }
                     }
                 }
+                Section {
+                    Picker("Tip perecentage", selection: $tipPerecentage) {
+                        ForEach(tipPerecentages, id: \.self) {
+                            Text($0, format: .percent)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("How much tip do you want to leave") 
+                }
+
                 Section {
                     Text(checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                 }
