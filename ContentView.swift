@@ -42,6 +42,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
+                //MARK: Check The Amount And Number Of People
                 Section {
                     TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                         .keyboardType(.decimalPad)
@@ -52,13 +53,16 @@ struct ContentView: View {
                         }
                     }
                 }
+                //MARK: Tip Percentage
                 Section {
                     Picker("Tip perecentage", selection: $tipPerecentage) {
-                        ForEach(tipPerecentages, id: \.self) {
+                       // ForEach(tipPerecentages, id: \.self) {
+                        //MARK: Challenge 3. Change the tip percentage picker to show a new screen rather than using a segmented control, and give it a wider range of options – everything from 0% to 100%. Tip: use the range 0..<101 for your range rather than a fixed array.
+                        ForEach(0..<101) {
                             Text($0, format: .percent)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    .pickerStyle(.automatic)
                 } header: {
                     Text("How much tip do you want to leave") 
                 }
@@ -68,7 +72,7 @@ struct ContentView: View {
                 } header: {
                     Text("Total check amount")
                 }
-
+                //MARK: Amount per Person
                 Section {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     //MARK: Challenge 1: Add a header to the third section, saying “Amount per person”
