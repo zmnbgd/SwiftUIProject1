@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var numbreOfPeople = 2
     @State private var tipPerecentage = 20
     @FocusState private var amountIsFocused: Bool
-    
+
     let tipPerecentages = [0, 5, 10, 15, 20, 25, 30]
     
     var totalPerPerson: Double {
@@ -37,6 +37,10 @@ struct ContentView: View {
         
         return totalAmountForCheck
         
+    }
+    //MARK: Day 24 - Challenge 1. Go back to project 1 and use a conditional modifier to change the total amount text view to red if the user selects a 0% tip.
+    var zeroTip: Bool {
+        return tipPerecentage == 0
     }
     
     var body: some View {
@@ -62,13 +66,16 @@ struct ContentView: View {
                             Text($0, format: .percent)
                         }
                     }
+
                     .pickerStyle(.automatic)
                 } header: {
                     Text("How much tip do you want to leave") 
                 }
                 //MARK: Challenge 2. Add another section showing the total amount for the check – i.e., the original amount plus tip value, without dividing by the number of people.
+                //MARK: Day 24 - Challenge 1.
                 Section {
                     Text(totalCheckAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                        .foregroundColor(zeroTip ? Color.red : Color.blue)
                 } header: {
                     Text("Total check amount")
                 }
